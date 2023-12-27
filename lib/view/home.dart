@@ -70,6 +70,8 @@ class _HomepageState extends State<Homepage> {
                     InkWell(
                       onTap: () {
                         cartController.addToCart(product);
+
+                        cartController.addCartList = product;
                       },
                       child: const Icon(Icons.add),
                     ),

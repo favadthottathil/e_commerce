@@ -19,36 +19,31 @@ class _CartState extends State<Cart> {
         title: const Text('Cart'),
       ),
       body: ListView.builder(
-        itemCount: cartController.cartData.length,
+        itemCount: cartController.cartList.length,
         itemBuilder: (context, index) {
-          
+          return Consumer<CartContrller>(builder: (context, provider, child) {
+            var cart = provider.cartList[index];
 
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListTile(
-              leading: const CircleAvatar(),
-              title: const Text('dhklad'),
-              subtitle: const Text('djalkdhkfa'),
-              trailing: SizedBox(
-                width: 40,
-                child: Row(
-                  children: [
-                    const Icon(Icons.remove),
-                    const SizedBox(width: 5),
-                    Consumer<CartContrller>(
-                      builder: (context,provider,child) {
-
-                        var cart = provider.cartData[index];
-
-
-                        return Text((cart ?? 0).toString());
-                      }
-                    )
-                  ],
+            var count = provider.cartData[cart];
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                leading: const CircleAvatar(),
+                title: Text(cart.name),
+                subtitle: Text(cart.price.toString()),
+                trailing: SizedBox(
+                  width: 40,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.remove),
+                      const SizedBox(width: 5),
+                      Text((count ?? 0).toString())
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
+            );
+          });
         },
       ),
     );
