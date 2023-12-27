@@ -35,7 +35,12 @@ class _CartState extends State<Cart> {
                   width: 40,
                   child: Row(
                     children: [
-                      const Icon(Icons.remove),
+                      InkWell(
+                        onTap: () {
+                          cartController.removeToCart(cart);
+                        },
+                        child: const Icon(Icons.remove),
+                      ),
                       const SizedBox(width: 5),
                       Text((count ?? 0).toString())
                     ],

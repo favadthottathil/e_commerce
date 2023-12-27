@@ -55,7 +55,12 @@ class _HomepageState extends State<Homepage> {
                 width: 90,
                 child: Row(
                   children: [
-                    const Icon(Icons.remove),
+                    InkWell(
+                      onTap: () {
+                        cartController.removeToCart(product);
+                      },
+                      child: const Icon(Icons.remove),
+                    ),
                     const SizedBox(width: 5),
                     Consumer<CartContrller>(builder: (
                       context,

@@ -23,4 +23,16 @@ class CartContrller extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  removeToCart(ProductDataModel productDataModel) {
+    if (!cartData.containsKey(productDataModel)) {
+      cartData[productDataModel] = 1;
+    } else {
+      if (cartData[productDataModel]! > 0) {
+        cartData[productDataModel] = (cartData[productDataModel] ?? 0) - 1;
+      }
+    }
+
+    notifyListeners();
+  }
 }
