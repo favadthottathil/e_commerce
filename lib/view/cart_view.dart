@@ -18,10 +18,10 @@ class _CartState extends State<Cart> {
       appBar: AppBar(
         title: const Text('Cart'),
       ),
-      body: ListView.builder(
-        itemCount: cartController.cartList.length,
-        itemBuilder: (context, index) {
-          return Consumer<CartContrller>(builder: (context, provider, child) {
+      body: Consumer<CartContrller>(builder: (context, provider, _) {
+        return ListView.builder(
+          itemCount: provider.cartList.length,
+          itemBuilder: (context, index) {
             var cart = provider.cartList[index];
 
             var count = provider.cartData[cart];
@@ -48,9 +48,9 @@ class _CartState extends State<Cart> {
                 ),
               ),
             );
-          });
-        },
-      ),
+          },
+        );
+      }),
     );
   }
 }

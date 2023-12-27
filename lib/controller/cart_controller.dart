@@ -30,6 +30,9 @@ class CartContrller extends ChangeNotifier {
     } else {
       if (cartData[productDataModel]! > 0) {
         cartData[productDataModel] = (cartData[productDataModel] ?? 0) - 1;
+        if (cartData[productDataModel]! <= 0) {
+          cartList.remove(productDataModel);
+        }
       }
     }
 
